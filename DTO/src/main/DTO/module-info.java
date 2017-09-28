@@ -1,0 +1,3 @@
+module DTO {
+    exports DTO;
+}

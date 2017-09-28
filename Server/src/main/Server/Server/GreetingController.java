@@ -1,5 +1,6 @@
 package Server;
 
+import Facade.GreetingFacade;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,11 +12,12 @@ import java.io.IOException;
 @RequestMapping("/api")
 public class GreetingController {
 
-    private static final String template = "Hello!";
+    //TODO: Beans
+    private GreetingFacade facade;
 
     @RequestMapping(method = RequestMethod.GET, value = "/greeting")
     public @ResponseBody String greeting(@RequestParam(value="name", defaultValue="World") String name) {
-        return template;
+        return facade.getGreetingMessage().getMessage();
     }
 
     @ExceptionHandler
